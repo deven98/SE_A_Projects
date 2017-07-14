@@ -1,17 +1,16 @@
 // Bookstore.cpp : Defines the entry point for the console application.
-//
+//=
 
 #include "stdafx.h"
 #include<iostream>
 #include<string>
-
 using namespace std;
 //Initial commit
 
 class Book
 {
 private:
-	string name, price, pub;
+	string name, pub;
 	int price, stock;
 	Book *next;
 
@@ -37,16 +36,29 @@ public:
 			newBook->next = head;
 			head = newBook;
 		}
+		return;
+	}
+
+	void displayBook()
+	{
+		Book *temp = head;
+		while (temp != NULL)
+		{
+			cout << "Title: " << name << endl;
+			cout << "Publisher: " << pub << endl;
+			cout << "Price: " << price << endl;
+			cout << "There are " << stock << " books" << endl << endl;
+			temp = temp->next;
+		}
+		return;
 	}
 };
 
-Book *head = NULL;
+Book *head;
 
 int main()
 {
-	string cart[10];
-	int totalPrice[10];
-
+	head = NULL;
 	bool isSeller;
 	cout << "Enter 1 to buy books\nEnter 2 to sell\n";
 	int c;
@@ -63,13 +75,17 @@ int main()
 		cin >> choice;
 		switch (choice)
 		{
+
 		case 1:
 		{
 			head->addBook();
+			break;
 		}
+
 		case 2:
 		{
-
+			head->displayBook();
+			break;
 		}
 		}
 			
@@ -90,23 +106,16 @@ int main()
 			switch (input) {
 
 			case 1:
-				head->searchBook();
+				
 				break;
 			case 2:
-				head->displayBook();
+				
 				break;
 			case 3:
-				for (int i = 0; i < cart->size; i++) {
-					cout <<i+1<<". "<< cart[i] << endl;
-				}
+				
 				break;
 			case 4:
-				int sum = 0;
-				for (int i = 0; i < sizeof(totalPrice); i++) {
-					cout <<i+1<<". "<< totalPrice[i]<<endl;
-					sum = sum + totalPrice[i];
-				}
-				cout << "Your total is : " << sum;
+				
 				break;
 			default:
 				cout << "Invalid input";
