@@ -77,7 +77,7 @@ int main()
 		{
 		case 1:
 		{
-			head->addBook();
+			addBook();
 		}
 		case 2:
 		{
