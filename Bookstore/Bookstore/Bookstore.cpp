@@ -12,9 +12,10 @@ class Book
 private:
 	string name, pub;
 	int price, stock;
-	Book *next;
+	
 
 public:
+	Book *next;
 	void addBook()
 	{
 		Book *newBook = new Book;
