@@ -59,7 +59,36 @@ int main()
 	}
 	else
 	{
+		do {
 
+			cout << "Welcome to the book store" << endl;
+			cout << "1. Search book" << endl;
+			cout << "2. Display Books" << endl;
+			cout << "3. Check cart" << endl;
+			cout << "4. Checkout" << endl;
+
+			int input;
+			cin >> input;
+			switch (input) {
+
+			case 1:
+				
+				break;
+			case 2:
+				
+				break;
+			case 3:
+				
+				break;
+			case 4:
+				
+				break;
+			default:
+				cout << "Invalid input";
+			}
+
+		} while (true);
+	
 	}
     return 0;
 }
