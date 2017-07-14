@@ -12,11 +12,11 @@ class Book
 {
 private:
 	string name, price, pub;
-	int price;
+	int price, stock;
 	Book *next;
 
 public:
-	void insert()
+	void addBook()
 	{
 		Book *newBook = new Book;
 		cout << "Enter the book name\n";
@@ -25,6 +25,8 @@ public:
 		cin >> price;
 		cout << "Enter the publisher's name\n";
 		cin >> pub;
+		cout << "Enter the number of books\n";
+		cin >> stock;
 		if (head == NULL) //create a head
 		{
 			newBook->next = NULL;
@@ -40,8 +42,6 @@ public:
 
 Book *head = NULL;
 
-
-
 int main()
 {
 	bool isSeller;
@@ -55,6 +55,21 @@ int main()
 
 	if (isSeller)
 	{
+		int choice;
+		cout << "Enter 1 to add a book\nEnter 2 to display all the books\n";
+		cin >> choice;
+		switch (choice)
+		{
+		case 1:
+		{
+			addBook();
+		}
+		case 2:
+		{
+
+		}
+		}
+			
 
 	}
 	else
