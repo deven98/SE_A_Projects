@@ -37,6 +37,21 @@ public:
 			newBook->next = head;
 			head = newBook;
 		}
+		return;
+	}
+
+	void displayBook()
+	{
+		Book *temp = head;
+		while (temp != NULL)
+		{
+			cout << "Title: " << name << endl;
+			cout << "Publisher: " << pub << endl;
+			cout << "Price: " << price << endl;
+			cout << "There are " << stock <<" books" << endl;
+			temp = temp->next;
+		}
+		return;
 	}
 };
 
@@ -62,7 +77,7 @@ int main()
 		{
 		case 1:
 		{
-			addBook();
+			head->addBook();
 		}
 		case 2:
 		{
