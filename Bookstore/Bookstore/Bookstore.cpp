@@ -44,6 +44,9 @@ Book *head = NULL;
 
 int main()
 {
+	string cart[10];
+	int totalPrice[10];
+
 	bool isSeller;
 	cout << "Enter 1 to buy books\nEnter 2 to sell\n";
 	int c;
@@ -62,7 +65,7 @@ int main()
 		{
 		case 1:
 		{
-			addBook();
+			head->addBook();
 		}
 		case 2:
 		{
@@ -87,16 +90,23 @@ int main()
 			switch (input) {
 
 			case 1:
-				
+				head->searchBook();
 				break;
 			case 2:
-				
+				head->displayBook();
 				break;
 			case 3:
-				
+				for (int i = 0; i < cart->size; i++) {
+					cout <<i+1<<". "<< cart[i] << endl;
+				}
 				break;
 			case 4:
-				
+				int sum = 0;
+				for (int i = 0; i < sizeof(totalPrice); i++) {
+					cout <<i+1<<". "<< totalPrice[i]<<endl;
+					sum = sum + totalPrice[i];
+				}
+				cout << "Your total is : " << sum;
 				break;
 			default:
 				cout << "Invalid input";
