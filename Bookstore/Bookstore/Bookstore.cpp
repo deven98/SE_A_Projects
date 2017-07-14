@@ -6,9 +6,15 @@
 using namespace std;
 //Initial commit
 
+class book
+{
+private:
+	string name, price, pub;
+	int price;
+};
+
 int main()
 {
-	cout << "Duh";
     return 0;
 }
 
