@@ -59,7 +59,10 @@ Book *head;
 
 int main()
 {
-	Book *head = new Book;
+	string cart[10];
+	int totalPrice[10];
+
+	head = NULL;
 	bool isSeller;
 	cout << "Enter 1 to buy books\nEnter 2 to sell\n";
 	int c;
@@ -107,16 +110,22 @@ int main()
 			switch (input) {
 
 			case 1:
-
+				//head->searchBook();
 				break;
 			case 2:
-
+				head->displayBook();
 				break;
 			case 3:
-
+				for (int i = 0; i < cart->size; i++) {
+					cout << i << ". " << cart[i] << endl;
+				}
 				break;
 			case 4:
-
+				int sum = 0;
+				for (int i = 0; i < sizeof(totalPrice); i++) {
+					sum = sum + totalPrice[i];
+				}
+				cout << "Your total price is " << sum<<endl;
 				break;
 			default:
 				cout << "Invalid input";
