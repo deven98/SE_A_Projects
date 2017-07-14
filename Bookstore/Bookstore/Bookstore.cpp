@@ -1,35 +1,14 @@
-// Bookstore .cpp : Defines the entry point for the console application.
+// Bookstore.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
 #include<iostream>
-
 using namespace std;
-
-class Book {
-
-private:
-	char name[20];
-	int price;
-	char publisher[20];
-
-public:
-
-	char getName() {
-		return *name;
-	}
-
-	void setName(string nameStr) {
-		strcpy_s(name, nameStr.c_str());
-	}
-
-};
+//Initial commit
 
 int main()
 {
-	Book one ;
-	one.setName("Random");
-	cout << one.getName();
+	cout << "Duh";
     return 0;
 }
 
