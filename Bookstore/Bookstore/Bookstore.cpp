@@ -3,11 +3,12 @@
 
 #include "stdafx.h"
 #include<iostream>
-
+using namespace std;
 //Initial commit
 
 int main()
 {
+	cout << "Duh";
     return 0;
 }
 
