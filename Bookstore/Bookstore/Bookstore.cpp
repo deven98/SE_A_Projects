@@ -59,7 +59,7 @@ Book *head;
 
 int main()
 {
-	head = NULL;
+	Book *head = new Book;
 	bool isSeller;
 	cout << "Enter 1 to buy books\nEnter 2 to sell\n";
 	int c;
