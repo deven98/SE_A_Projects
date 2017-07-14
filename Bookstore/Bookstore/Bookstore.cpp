@@ -1,17 +1,16 @@
 // Bookstore.cpp : Defines the entry point for the console application.
-//
+//=
 
 #include "stdafx.h"
 #include<iostream>
 #include<string>
-
 using namespace std;
 //Initial commit
 
 class Book
 {
 private:
-	string name, price, pub;
+	string name, pub;
 	int price, stock;
 	Book *next;
 
@@ -48,17 +47,18 @@ public:
 			cout << "Title: " << name << endl;
 			cout << "Publisher: " << pub << endl;
 			cout << "Price: " << price << endl;
-			cout << "There are " << stock <<" books" << endl;
+			cout << "There are " << stock << " books" << endl << endl;
 			temp = temp->next;
 		}
 		return;
 	}
 };
 
-Book *head = NULL;
+Book *head;
 
 int main()
 {
+	head = NULL;
 	bool isSeller;
 	cout << "Enter 1 to buy books\nEnter 2 to sell\n";
 	int c;
@@ -75,13 +75,17 @@ int main()
 		cin >> choice;
 		switch (choice)
 		{
+
 		case 1:
 		{
 			head->addBook();
+			break;
 		}
+
 		case 2:
 		{
-
+			head->displayBook();
+			break;
 		}
 		}
 			
