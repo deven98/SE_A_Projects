@@ -20,13 +20,14 @@ private:
 	string author;
 	string title;
 	int price;
-	
+
 public:
 
 	//Static variables to store number of books as it is not an independent quantity
 	//Static variables are not part of the object , rather all classes share the same static variable, so any increment is an increment to all of them.
 
 	static int numberOfBooks;
+	static int itemsInCart;
 
 	//Constructor
 	Book() {}
@@ -54,8 +55,10 @@ public:
 		cout << "Title : " << title << endl;
 		cout << "Author : " << author << endl;
 		cout << "Price : " << price << endl;
-	
+
 	}
+
+	//Static functions to avoid creating objects :-P
 
 	static void displayBooks(Book books[200]) {
 
@@ -67,11 +70,40 @@ public:
 
 	}
 
+	static void displayCart(Book books[10]) {
+
+		for (int i = 0; i < itemsInCart; i++) {
+
+			books[i].displayDetails();
+
+		}
+	}
+
+	static void searchByAuthor(Book books[200], string Author) {
+
+		for (int i = 0; i < numberOfBooks; i++) {
+
+			if (Author == books[i].getAuthor()) {
+				books[i].displayDetails();
+			}
+		}
+	}
+
+	static void searchByTitle(Book books[200] , string Title) {
+		for (int i = 0; i < numberOfBooks; i++) {
+
+			if (Title == books[i].getTitle()) {
+				books[i].displayDetails();
+			}
+		}
+	}
+
 };
 
 
 // Initializing static members. 
 int Book::numberOfBooks = 0;
+int Book::itemsInCart = 0;
 
 int main()
 {
@@ -120,6 +152,7 @@ int main()
 
 				int input;
 				cin >> input;
+				string in;
 				switch (input) {
 
 				case 1:
@@ -131,7 +164,23 @@ int main()
 					break;
 
 				case 3:
-					//Search code
+					cout << "Press 1 or searching by title or 2 for author" << endl;
+					cin >> input;
+					
+					switch (input)
+					{
+					case 1:
+						cout << "Enter the title of the book" << endl;
+						cin >> in;
+						Book::searchByTitle(books,in);
+					case 2:
+						cout << "Enter the author of the book" << endl;
+						cin >> in;
+						Book::searchByAuthor(books, in);
+					default:
+						cout << "Invalid command" << endl;
+						break;
+					}
 					break;
 
 				case 4:
@@ -162,20 +211,49 @@ int main()
 				cout << "4.Generate bill" << endl;
 				cout << "5.Switch to seller mode" << endl;
 
+				int sum = 0;
+				string in;
 				int input;
 				cin >> input;
 				switch (input) {
 
 				case 1:
+					Book::displayBooks(books);
 					break;
 
 				case 2:
+					cout << "Press 1 or searching by title or 2 for author" << endl;
+					cin >> input;
+
+					switch (input)
+					{
+					case 1:
+						cout << "Enter the title of the book" << endl;
+						cin >> in;
+						Book::searchByTitle(books, in);
+						break;
+					case 2:
+						cout << "Enter the author of the book" << endl;
+						cin >> in;
+						Book::searchByAuthor(books, in);
+						break;
+					default:
+						cout << "Invalid command" << endl;
+						break;
+					}
 					break;
 
 				case 3:
+					Book::displayCart(books);
 					break;
 
 				case 4:
+
+					for (int i = 0; i < Book::itemsInCart; i++) {
+						sum = sum + cart[i].getPrice();
+					}
+
+					cout << "Your total is : " << sum;
 					break;
 
 				case 5:
