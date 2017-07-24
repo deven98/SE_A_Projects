@@ -1,3 +1,7 @@
+/*
+Created by DEVEN on 24/7/17
+*/
+
 // BookStoreNew.cpp : Defines the entry point for the console application.
 //Author : Deven Joshi
 //GitHub : www.github.com/deven98
@@ -8,6 +12,11 @@
 #include<cstring>
 #include<string>
 #include<stdlib.h>
+//If you are using any other compiler than Visual studio , you may need to edit the header files with '.h'.
+
+//IMPORTANT : I've used static functions to avoid creating objects for every single function call.
+// I recommend you read up on static functions because of their usefulness in reducing boilerplate code and instantiation.
+// You can read the code without a knowledge of static functions as well. 
 
 using namespace std;
 
@@ -41,13 +50,16 @@ public:
 
 		system("cls");
 		cout << "Enter the title of the book:" << endl;
-		cin >> title;
+		cin.ignore();
+		getline(cin, title);
 		cout << "Enter the author:" << endl;
-		cin >> author;
+		cin.ignore();
+		getline(cin, author);
 		cout << "Enter the price:" << endl;
 		cin >> price;
 		numberOfBooks++;
 		system("cls");
+
 	}
 
 	//Display Function
@@ -62,6 +74,7 @@ public:
 
 	//Static functions to avoid creating objects :-P
 
+	//Used to display the list of books available
 	static void displayBooks(Book books[200]) {
 
 		system("cls");
@@ -75,6 +88,7 @@ public:
 
 	}
 
+	//Used to display books in cart
 	static void displayCart(Book books[10]) {
 
 		system("cls");
@@ -85,7 +99,7 @@ public:
 
 		}
 	}
-
+	//Used to search by author
 	static void searchByAuthor(Book books[200], string Author) {
 
 		system("cls");
@@ -98,6 +112,8 @@ public:
 		}
 	}
 
+	//Used to search title
+	//Not overloaded because of same parameter types. Another option is to add a third boolean parameter to identify operation.
 	static void searchByTitle(Book books[200] , string Title) {
 
 		system("cls");
@@ -159,6 +175,8 @@ int main()
 		// if(isSeller) is equivalent to if(isSeller == true)
 		if (isSeller) {
 				
+			//This only runs if user has chosen the seller option
+
 			do { 
 			
 				cout << "1.Add book"<<endl;
@@ -184,6 +202,7 @@ int main()
 					cout << "Press 1 or searching by title or 2 for author" << endl;
 					cin >> input;
 					
+					//Nested switch-case for identifying search option
 					switch (input)
 					{
 					case 1:
@@ -246,6 +265,8 @@ int main()
 				case 2:
 					cout << "Press 1 or searching by title or 2 for author" << endl;
 					cin >> input;
+
+					//Nested switch-case to identify search option
 
 					switch (input)
 					{
