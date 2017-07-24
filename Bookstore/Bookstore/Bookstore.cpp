@@ -59,6 +59,8 @@ Book *head;
 
 int main()
 {
+
+	Book *head = new Book;
 	string cart[10];
 	int totalPrice[10];
 
@@ -125,8 +127,9 @@ int main()
 				for (int i = 0; i < sizeof(totalPrice); i++) {
 					sum = sum + totalPrice[i];
 				}
-				cout << "Your total price is " << sum<<endl;
+				cout << "Your total price is " << sum << endl;
 				break;
+
 			default:
 				cout << "Invalid input";
 			}
