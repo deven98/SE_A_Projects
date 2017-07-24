@@ -39,6 +39,7 @@ public:
 
 	void setDetails() {
 
+		system("cls");
 		cout << "Enter the title of the book:" << endl;
 		cin >> title;
 		cout << "Enter the author:" << endl;
@@ -46,6 +47,7 @@ public:
 		cout << "Enter the price:" << endl;
 		cin >> price;
 		numberOfBooks++;
+		system("cls");
 	}
 
 	//Display Function
@@ -62,8 +64,11 @@ public:
 
 	static void displayBooks(Book books[200]) {
 
+		system("cls");
+
 		for (int i = 0; i < numberOfBooks; i++) {
 
+			cout << i + 1 << ". " << endl;
 			books[i].displayDetails();
 
 		}
@@ -71,6 +76,8 @@ public:
 	}
 
 	static void displayCart(Book books[10]) {
+
+		system("cls");
 
 		for (int i = 0; i < itemsInCart; i++) {
 
@@ -81,6 +88,8 @@ public:
 
 	static void searchByAuthor(Book books[200], string Author) {
 
+		system("cls");
+
 		for (int i = 0; i < numberOfBooks; i++) {
 
 			if (Author == books[i].getAuthor()) {
@@ -90,6 +99,9 @@ public:
 	}
 
 	static void searchByTitle(Book books[200] , string Title) {
+
+		system("cls");
+
 		for (int i = 0; i < numberOfBooks; i++) {
 
 			if (Title == books[i].getTitle()) {
@@ -99,6 +111,9 @@ public:
 	}
 
 };
+
+//Displays a starline. Only for presentation , no actual use.
+void starLine() { cout << "*************************" << endl; }
 
 
 // Initializing static members. 
@@ -116,8 +131,10 @@ int main()
 	Book books[200];
 	Book cart[10];
 
+	starLine();
 	cout << "Welcome to <placeholder> Book Store!" << endl;
 	cout << "Enter 1 for Seller mode and 2 to purchase books" << endl;
+	starLine();
 	
 	//while loop keeps repeating until input is correct. If input is valid , loop breaks or else it gives an invalid command error.
 
@@ -160,7 +177,7 @@ int main()
 					break;
 						
 				case 2:	
-					cout << "Total number of books are : " << Book::numberOfBooks;
+					cout << "Total number of books are : " << Book::numberOfBooks << endl;
 					break;
 
 				case 3:
@@ -189,6 +206,7 @@ int main()
 
 				case 5:
 					isSeller = false;
+					system("cls");
 					break;
 
 				default:
@@ -219,6 +237,10 @@ int main()
 
 				case 1:
 					Book::displayBooks(books);
+					cout << "Enter the number of the book you want to add: "<<endl;
+					cin >> input;
+					cart[Book::itemsInCart] = books[input - 1];
+					Book::itemsInCart++;
 					break;
 
 				case 2:
@@ -252,8 +274,8 @@ int main()
 					for (int i = 0; i < Book::itemsInCart; i++) {
 						sum = sum + cart[i].getPrice();
 					}
-
-					cout << "Your total is : " << sum;
+					system("cls");
+					cout << "Your total is : " << sum << endl;
 					break;
 
 				case 5:
