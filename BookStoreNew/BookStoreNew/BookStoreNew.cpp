@@ -7,6 +7,7 @@
 #include<iostream>
 #include<cstring>
 #include<string>
+#include<stdlib.h>
 
 using namespace std;
 
@@ -35,7 +36,39 @@ public:
 	string getTitle() { return title; }
 	int getPrice() { return price; }
 
+	void setDetails() {
+
+		cout << "Enter the title of the book:" << endl;
+		cin >> title;
+		cout << "Enter the author:" << endl;
+		cin >> author;
+		cout << "Enter the price:" << endl;
+		cin >> price;
+		numberOfBooks++;
+	}
+
+	//Display Function
+
+	void displayDetails() {
+
+		cout << "Title : " << title << endl;
+		cout << "Author : " << author << endl;
+		cout << "Price : " << price << endl;
+	
+	}
+
+	static void displayBooks(Book books[200]) {
+
+		for (int i = 0; i < numberOfBooks; i++) {
+
+			books[i].displayDetails();
+
+		}
+
+	}
+
 };
+
 
 // Initializing static members. 
 int Book::numberOfBooks = 0;
@@ -46,13 +79,15 @@ int main()
 	//This boolean is used to check whether the person is the buyer or the seller and display menus accordingly.
 	//If true then the seller menu is displayed or else the buyer menu is displayed.
 
+	//An array of type Book for storing all books
+	//Cart is the array that stores the books the user wants to purchase.
 	Book books[200];
 	Book cart[10];
 
 	cout << "Welcome to <placeholder> Book Store!" << endl;
 	cout << "Enter 1 for Seller mode and 2 to purchase books" << endl;
 	
-	//while loop keeps repeating until input is correct. If input is valid , loop breaks or else it gives an invalid command error
+	//while loop keeps repeating until input is correct. If input is valid , loop breaks or else it gives an invalid command error.
 
 	while (1) {
 		int input;
@@ -71,67 +106,91 @@ int main()
 
 	//Now we have to display two menus using switch case. One if person is the buyer and the other if he's the seller.
 
-	// if(isSeller) is equivalent to if(isSeller == true)
-	if (isSeller) {
+	do{
+		// if(isSeller) is equivalent to if(isSeller == true)
+		if (isSeller) {
+				
+			do { 
+			
+				cout << "1.Add book"<<endl;
+				cout << "2.Total Number of books" << endl;
+				cout << "3.Search Book" << endl;
+				cout << "4.Display books" << endl;
+				cout << "5.Switch to buyer mode" << endl;
 
-		do { 
-		
-			cout << "1.Add book"<<endl;
-			cout << "2.Total Number of books" << endl;
-			cout << "3.Search Book" << endl;
+				int input;
+				cin >> input;
+				switch (input) {
 
-			int input;
-			cin >> input;
-			switch (input) {
+				case 1:
+					books[Book::numberOfBooks].setDetails();
+					break;
+						
+				case 2:	
+					cout << "Total number of books are : " << Book::numberOfBooks;
+					break;
 
-			case 1:
-				break;
+				case 3:
+					//Search code
+					break;
 
-			case 2:
-				break;
+				case 4:
+					Book::displayBooks(books);
+					break;
 
-			case 3:
-				break;
+				case 5:
+					isSeller = false;
+					break;
 
-			}
-		
-		} while (1);
-
-	}
-	else {
-
-		//This will execute if the user selects buyer.
-
-		do {
-			cout << "1.List of Books" << endl;
-			cout << "2.Search Book" << endl;
-			cout << "3.Cart" << endl;
-			cout << "4.Generate bill" << endl;
-
-			int input;
-			cin >> input;
-			switch (input) {
-
-			case 1:
-				break;
-
-			case 2:
-				break;
-
-			case 3:
-				break;
-
-			case 4:
-				break;
-
-			default:
-				break;
-
-			}
-
-		} while (1);
+				default:
+					cout << "Invalid command";
+					break;
 	
-	}
+				}
+		
+			} while (isSeller);
+
+		}
+		else {
+
+			//This will execute if the user selects buyer.
+
+			do {
+				cout << "1.List of Books" << endl;
+				cout << "2.Search Book" << endl;
+				cout << "3.Cart" << endl;
+				cout << "4.Generate bill" << endl;
+				cout << "5.Switch to seller mode" << endl;
+
+				int input;
+				cin >> input;
+				switch (input) {
+
+				case 1:
+					break;
+
+				case 2:
+					break;
+
+				case 3:
+					break;
+
+				case 4:
+					break;
+
+				case 5:
+					isSeller = true;
+
+				default:
+					break;
+
+				}
+
+			} while (!isSeller);
+
+		}
+	
+	} while (1);
 
 	return 0;
 }
