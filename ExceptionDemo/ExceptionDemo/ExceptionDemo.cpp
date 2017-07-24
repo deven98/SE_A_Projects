@@ -30,13 +30,13 @@ public:
 	void checkValidity() {
 
 		Value_Out_Of_Bounds_Exception v;
-		if ((age < 15 || age>55) || !hasFourWheeler || (income < 50000 || income >100000) || ((city != "Pune") || (city != "Bangalore") || (city != "Mumbai") || (city != "Chennai")))
+		if ((age < 15 || age>55) || !hasFourWheeler || (income < 50000 || income >100000) || ((city != "Pune") && (city != "Bangalore") && (city != "Mumbai") && (city != "Chennai")))
 		throw v;
 	}
 
 	void setData() {
 
-		cout << "Enter your city";
+		cout << "Enter your city : " << endl;
 		getline(cin, city);
 		cout << "Enter your age : " << endl;
 		cin >> age;
